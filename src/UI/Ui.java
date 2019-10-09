@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 public class Ui {
     
-    public static void menuPrincipal(ListGeneric listaClientes){
+    public static void menuPrincipal(ListGeneric listaClientes, ListGeneric listaAdms){
         System.out.println("Bienvenido a FortuneBet");
         System.out.println("Que desea realizar?");
         System.out.println("1. Crear usuario\n2. Iniciar sesion");
@@ -27,14 +27,16 @@ public class Ui {
         
         switch (i){
             case 1:
+                //Crear Usuario
                 listaClientes.insertar(crearUsuario());
                 System.out.println(listaClientes.getTamaño());
             case 2:
+                //Iniciar sesion
                 iniciarSesion(listaClientes);
                 break;
             case 3:{
                 System.out.println("No digito un valor valido");
-                menuPrincipal(listaClientes);}
+                menuPrincipal(listaClientes,listaAdms);}
         }
     }
     public static Cliente crearUsuario(){
@@ -62,13 +64,16 @@ public class Ui {
         
         switch (j){
             case 1:
+                //Cliente
                 iniciarSesionCliente(listaClientes);
             case 2:
+                //Administrador
                 iniciarSesionAdm();
            
             case 3:
                 break;
             default:
+                break;
         }
         
     }
@@ -113,8 +118,18 @@ public class Ui {
             
         while(aux2!=null){
             
+            if (clave == null ? aux2.getData().getContraseña() == null : clave.equals(aux2.getData().getContraseña())){
+                if (usuario == null ? aux2.getData().getUsuario() == null : usuario.equals(aux2.getData().getUsuario())){
+                    return aux2;
                 
-            if ((clave == null ? aux2.getData().getContraseña() == null : clave.
+                }
+            }else 
+                aux2=aux2.getNext();
+        }
+        return (aux2);
+            
+                
+            /** if ((clave == null ? aux2.getData().getContraseña() == null : clave.
                     equals(aux2.getData().getContraseña()) )&&(usuario == null ?
                     aux2.getData().getUsuario() == null : usuario.equals(aux2.
                             getData().getUsuario()))){
@@ -127,12 +142,18 @@ public class Ui {
             
         }
         return (aux2);
-    
+    */
     }
-     public static void iniciarSesionAdm(){}
+     public static void iniciarSesionAdm(){
+     
+     }
     public static void main(String[] args) {
         Adm admA = new Adm("Fabian Galindo",123,"123");
         ListGeneric<Cliente> listaClientes =new ListGeneric<>();
+        ListGeneric<Adm> listaAdms =new ListGeneric<>();
+        listaAdms.insertar(admA);
+        
+        
         Cliente cliente1 = new Cliente ("nombre1", 0, "1", "1" );
         Cliente cliente2 = new Cliente ("nombre2", 0, "3", "4");
         Cliente cliente3 = new Cliente ("nombre3", 0, "usuario", "clave");
@@ -142,7 +163,7 @@ public class Ui {
         listaClientes.insertar(cliente3);
         listaClientes.insertar(cliente4);
         
-        menuPrincipal(listaClientes);
+        menuPrincipal(listaClientes, listaAdms);
        
     
     }
