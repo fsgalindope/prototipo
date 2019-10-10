@@ -184,20 +184,48 @@ public class Ui {
      public static ListGeneric<Cliente> listaClientes;
      
     public static void main(String[] args) {
+        ListGeneric<Adm> listaAdms1 = new ListGeneric<>();
+        listaAdms=listaAdms1;
         Adm admA = new Adm("Fabian Galindo",123,"123");
         listaAdms.insertar(admA);
-        
+        ListGeneric<Cliente> listaCLientes1 = new ListGeneric<>();
+        listaClientes=listaCLientes1;
         
         Cliente cliente1 = new Cliente ("nombre1", 0, "1", "1" );
         Cliente cliente2 = new Cliente ("nombre2", 0, "3", "4");
         Cliente cliente3 = new Cliente ("nombre3", 0, "usuario", "clave");
         Cliente cliente4 = new Cliente ("nombre4", 0, "5", "6");
-        listaClientes.insertar(cliente1);
+        
         listaClientes.insertar(cliente2);
         listaClientes.insertar(cliente3);
         listaClientes.insertar(cliente4);
+        listaClientes.insertar(cliente1);
+        
         
         menuPrincipal();
+        /* int n=14000000;
+        for ( int i=0;i<=n;i++){
+        listaClientes.insertar(new Cliente ("nombre1", 0, "1", "1" ));
+        }
+         System.out.println(listaClientes.getTamaño());
+        int t = listaClientes.getTamaño();
+       for (int i=0;i<=t;i++){
+           listaClientes.remove();
+       
+       }
+        System.out.println(listaClientes.getTamaño());
+          
+ 
+            
+        System.out.println(comparar("1","1").getData().toString());
+        Node<Cliente> aux = new Node<>();
+            
+           aux=listaClientes.getFront();
+           for (int i=0;i<listaClientes.getTamaño();i++){
+           System.out.println(aux.getData().toString());
+           aux=aux.getNext();
+        
+        } */ 
        
     
     }
