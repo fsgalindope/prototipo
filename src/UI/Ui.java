@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 public class Ui {
     
-    public static void menuPrincipal(ListGeneric listaClientes, ListGeneric listaAdms){
+    public static void menuPrincipal(){
         System.out.println("Bienvenido a FortuneBet");
         System.out.println("Que desea realizar?");
         System.out.println("1. Crear usuario\n2. Iniciar sesion");
@@ -32,11 +32,11 @@ public class Ui {
                 System.out.println(listaClientes.getTamaño());
             case 2:
                 //Iniciar sesion
-                iniciarSesion(listaClientes);
+                iniciarSesion();
                 break;
             case 3:{
                 System.out.println("No digito un valor valido");
-                menuPrincipal(listaClientes,listaAdms);}
+                menuPrincipal();}
         }
     }
     public static Cliente crearUsuario(){
@@ -57,7 +57,7 @@ public class Ui {
         
         
     }
-    public static void iniciarSesion(ListGeneric listaClientes){
+    public static void iniciarSesion(){
         System.out.println("1. Cliente 2.Administrador 3. cerrar");
         Scanner teclado= new Scanner(System.in);
         int j = teclado.nextInt();
@@ -65,7 +65,7 @@ public class Ui {
         switch (j){
             case 1:
                 //Cliente
-                iniciarSesionCliente(listaClientes);
+                iniciarSesionCliente();
             case 2:
                 //Administrador
                 iniciarSesionAdm();
@@ -77,17 +77,20 @@ public class Ui {
         }
         
     }
-    public static void iniciarSesionCliente(ListGeneric listaClientes){
+    public static void iniciarSesionCliente(){
         Scanner teclado= new Scanner(System.in);
         System.out.println("usuario");
         String usuario = teclado.nextLine();
          System.out.println("clave");
         String clave = teclado.nextLine();
         Node<Cliente> aux = new Node<>();
-        aux = comparar (listaClientes,clave, usuario);
+        aux = comparar (clave, usuario);
         if(aux!=null){
             System.out.println("Bienvenido");
-            generarClienteActual(aux.getData());}
+            generarClienteActual(aux.getData());
+            
+            
+        }
         else{
             System.out.println("contraseña incorrecta");
                 
@@ -103,6 +106,7 @@ public class Ui {
             switch(h){
                 case 1:{
                     System.out.println(cliente.toString());
+                    break;
                 }
                 case 2:{
                     System.out.println("Edicion de cliente \n1. nombre\n2. id\n3 usuario\n4 cuenta");
@@ -135,13 +139,13 @@ public class Ui {
                             break;
                         }
                     }
+                    break;
                 }
                 default:  { System.out.println("Dato incorrecto");
-                            break;}    
+                            }    
             }
     }
-    public static Node<Cliente> comparar(ListGeneric listaClientes,String clave,
-            String usuario){
+    public static Node<Cliente> comparar(String clave,String usuario){
         Node<Cliente> aux2 = listaClientes.getFront();
             
         while(aux2!=null){
@@ -175,10 +179,12 @@ public class Ui {
      public static void iniciarSesionAdm(){
      
      }
+     
+     public static ListGeneric<Adm> listaAdms;
+     public static ListGeneric<Cliente> listaClientes;
+     
     public static void main(String[] args) {
         Adm admA = new Adm("Fabian Galindo",123,"123");
-        ListGeneric<Cliente> listaClientes =new ListGeneric<>();
-        ListGeneric<Adm> listaAdms =new ListGeneric<>();
         listaAdms.insertar(admA);
         
         
@@ -191,7 +197,7 @@ public class Ui {
         listaClientes.insertar(cliente3);
         listaClientes.insertar(cliente4);
         
-        menuPrincipal(listaClientes, listaAdms);
+        menuPrincipal();
        
     
     }
