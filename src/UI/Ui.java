@@ -105,12 +105,40 @@ public class Ui {
                     System.out.println(cliente.toString());
                 }
                 case 2:{
-                    
+                    System.out.println("Edicion de cliente \n1. nombre\n2. id\n3 usuario\n4 cuenta");
+                    int n= teclado.nextInt();
+                    System.out.println(n);
+                    switch (n){
+                        case 1:{
+                            System.out.println("Digite el nuevo "+n);
+                            cliente.setNombre(teclado.next());
+                            System.out.println(cliente.getNombre());
+                            break;
+                        }
+                        case 2:{
+                        System.out.println("Digite el nuevo "+n);
+                        cliente.setId(teclado.nextInt());
+                            break;
+                        }
+                        case 3: {
+                        System.out.println("Digite el nuevo "+n);
+                        cliente.setUsuario(teclado.next());
+                            break;
+                        }
+                        case 4: {
+                        System.out.println("Digite el nuevo "+n);
+                        cliente.setCuenta(teclado.nextInt());
+                            break;
+                        }
+                        default:{
+                            System.out.println("Dato incorrecto");
+                            break;
+                        }
+                    }
                 }
+                default:  { System.out.println("Dato incorrecto");
+                            break;}    
             }
-        
-        
-        
     }
     public static Node<Cliente> comparar(ListGeneric listaClientes,String clave,
             String usuario){
