@@ -43,6 +43,12 @@ public class ListGeneric<T>{
     public Node<T> getFront() {
         return front;
     }
+    public void remove(){
+        while (tamaño!=1){
+        tamaño--;
+        front=front.getNext();
+        }
+    }
 
  
  
