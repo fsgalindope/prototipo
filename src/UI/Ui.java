@@ -200,8 +200,7 @@ public class Ui {
         listaClientes.insertar(cliente3);
         listaClientes.insertar(cliente4);
         listaClientes.insertar(cliente1);
-        
-        
+
         menuPrincipal();
         
         
@@ -215,11 +214,22 @@ public class Ui {
         int t = listaClientes.getTamaño();
        for (int i=0;i<=t;i++){
            listaClientes.remove();
+
+        
+       // menuPrincipal();
+       int n=14000000;
+        for ( int i=0;i<=n;i++){
+        listaClientes.insertar(new Cliente ("nombre1", 0, "1", "1" ));
+        }
+          /* System.out.println(listaClientes.getTamaño());
+        int t = listaClientes.getTamaño();
+       for (int i=0;i<=t;i++){
+           listaClientes.remove();
        
        }
         System.out.println(listaClientes.getTamaño());
           
- 
+
             
         System.out.println(comparar("1","1").getData().toString());
         Node<Cliente> aux = new Node<>();
@@ -229,9 +239,13 @@ public class Ui {
            System.out.println(aux.getData().toString());
            aux=aux.getNext();
         
-        } */ 
+        } 
+       
+      */ 
        
     //hola
+    
+        System.out.println("hola");
     }
     
 }
